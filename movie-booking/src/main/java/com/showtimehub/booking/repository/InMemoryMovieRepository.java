@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
-public class InMemoryMovieRepository implements MovieRepository {
+public class InMemoryMovieRepository implements StaticMovieRepository {
     private List<Movie> movies = new ArrayList<>();
 
     @Override
@@ -17,9 +17,9 @@ public class InMemoryMovieRepository implements MovieRepository {
     }
 
     @Override
-    public List<Movie> findByCity(String city) {
+    public List<Movie> findByTitle(String title) {
         return movies.stream()
-                .filter(movie -> movie.getCity().equalsIgnoreCase(city))
+                .filter(movie -> movie.getTitle().equalsIgnoreCase(title))
                 .collect(Collectors.toList());
     }
 
@@ -27,4 +27,10 @@ public class InMemoryMovieRepository implements MovieRepository {
     public void save(Movie movie) {
         movies.add(movie);
     }
+
+	@Override
+	public List<Movie> findByCity(String city) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
