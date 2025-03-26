@@ -1,20 +1,19 @@
 package com.showtimehub.booking.model;
 
+import lombok.Data;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import lombok.Data;
+import java.util.List;
 
 @Data
-@Document(collection = "movies")
-public class Movie {
+@Document(collection = "theatres")
+public class Theater {
     @Id
     private ObjectId id;
-    private String title;
-    private String description;
-    private int duration;
-    private String genre;
-
-    // Getters and Setters
+    private String name;
+    private String address;
+    private ObjectId city;
+    private List<ObjectId> shows;
 }

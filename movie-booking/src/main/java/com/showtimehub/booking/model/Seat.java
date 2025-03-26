@@ -7,14 +7,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 
 @Data
-@Document(collection = "movies")
-public class Movie {
+@Document(collection = "seats")
+public class Seat {
     @Id
     private ObjectId id;
-    private String title;
-    private String description;
-    private int duration;
-    private String genre;
+    private ObjectId show;
+    private String row;
+    private int number;
+    private boolean isBooked;
 
     // Getters and Setters
 }
