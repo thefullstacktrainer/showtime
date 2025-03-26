@@ -1,5 +1,6 @@
 package com.showtimehub.booking.service.impl;
 
+import com.showtimehub.booking.exception.SeatAlreadyBookedException;
 import com.showtimehub.booking.model.Booking;
 import com.showtimehub.booking.model.Seat;
 import com.showtimehub.booking.repository.BookingRepository;
@@ -28,7 +29,7 @@ public class BookingServiceImpl implements BookingService {
                 List<Seat> seats = seatRepository.findAllById(booking.getSeats());
                 for (Seat seat : seats) {
                     if (seat.isBooked()) {
-                        throw new IllegalStateException("Seat " + seat.getId() + " is already booked.");
+                        throw new SeatAlreadyBookedException("Seat " + seat.getId() + " is already booked.");
                     }
                 }
 
